@@ -25,9 +25,10 @@ function SimpleAppBar(props) {
           </Typography>
         </Toolbar>
       </AppBar>
+      <FlightDetails></FlightDetails>
+
       <TrendingHashtags/>
 
-      <FlightDetails></FlightDetails>
     </div>
   );
 }
