@@ -1,32 +1,41 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 class trendinghashtags extends Component {
+
+  constructor(props) {
+    super(props);
+    
+    this.state = { 
+      hashTags: [{key: 1, value: "AustinPride"}, {key: 2, value: "Beyonce"}, {key: 3, value: "DogWalks"}],
+    };
+	}
+
 	render() {
+			
+		const hashTags = this.state.hashTags;
+
+
+		let hashTagsContent = hashTags && hashTags.map( (hashtag, key ) => {
+			return (
+				<Typography key={hashtag.key} color="textSecondary" gutterBottom>
+					#{hashtag.value}
+				</Typography>
+				
+			);
+		});
+
 		return (
 			<Card>
       <CardContent>
 
         <Typography gutterBottom variant="h5" component="h2">
-					Trending Hashtags
+					Trending Hashtags For Austin
 				</Typography>
 
-				<Typography color="textSecondary" gutterBottom>
-          #BeyonceConcert
-        </Typography>
-
-				<Typography color="textSecondary" gutterBottom>
-          #PrideParade2018
-        </Typography>
-
-				<Typography color="textSecondary" gutterBottom>
-          #HackTX
-        </Typography>
+				{hashTagsContent}
 
       </CardContent>
       
