@@ -26,6 +26,10 @@
   margin: 4%;
 }
 
+.Root {
+  flex-grow: 1;
+}
+
 .HeaderTitle {
   margin-left: 2%;
 }
