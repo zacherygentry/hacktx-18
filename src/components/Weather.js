@@ -18,16 +18,17 @@ const styles = {
         transform: 'scale(0.8)',
     },
     title: {
-        fontSize: 14,
+      fontSize: 14,
     },
     pos: {
-        marginBottom: 12,
+      marginBottom: 12,
     },
     forecastItem: {
       display: 'flex',
       flexDirection: 'column',
-      marginLeft: 'auto',
-      marginRight: 'auto'
+      margin: 'auto',
+      marginTop: '2%',
+
 
     },
     forecastList: {
@@ -86,7 +87,7 @@ class Weather extends Component {
       <Card className='Card'>
         <CardContent>
           <Typography variant="h6" component="h5">
-            5-Day Weather Forecast
+            5-Day Weather Forecast for {destination}
           </Typography>
           <div style={styles.forecastList}>
             {forcastsContent}
