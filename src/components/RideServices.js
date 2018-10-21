@@ -38,8 +38,8 @@ function RideServices(props) {
     return (
         <Card className='Card'>
             <CardContent>
-                <Typography component="h2" className={classes.headerTitle}>
-                    Ride Service Prices
+                <Typography variant="h6" component="h5">
+                    Ride Sharing Prices
                 </Typography>
 
                 <div className={classes.body}>
@@ -62,7 +62,7 @@ class Service extends React.Component {
     render() {
         return (
             <div style={styles.service}>
-                <Typography style={styles.centerChild} component='h2' variant='h6'>
+                <Typography style={styles.centerChild}>
                     {this.props.service + ': $' + this.props.price}
                 </Typography>
             </div>

@@ -3,7 +3,7 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import {MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import TrendingHashtags from './components/trendinghashtags';
 import FlightDetails from './components/FlightDetails';
@@ -14,11 +14,15 @@ import RideServices from './components/RideServices';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#0078d2'
+      main: '#0078d2',
+      contrastText: '#ffffff',
     },
     secondary: {
-      main: '#4db4fa',
+      main: '#ffffff',
     },
+    textPrimary: {
+      main: '#ffffff'
+    }
   },
 });
 
@@ -46,20 +50,18 @@ class SimpleAppBar extends React.Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-      <div className='Root'>
-        <AppBar color="secondary" position="static">
-          <Toolbar>
-            <Typography variant="h6" color="inherit">
-              Welcome, {this.state.name}
-            </Typography>
-          </Toolbar>
-        </AppBar>
+        <div className='Root'>
+          <AppBar color="primary" position="static">
+            <Toolbar>
+              <Typography variant="h6" color='secondary'>
+                Welcome, {this.state.name}
+              </Typography>
+            </Toolbar>
+          </AppBar>
 
-        <FlightDetails></FlightDetails>
-        <ToDo></ToDo>
-        <Weather></Weather>
-        <TrendingHashtags />
-        <RideServices></RideServices>
+          <FlightDetails></FlightDetails>
+          <Weather></Weather>
+          <RideServices></RideServices>
         </div>
       </MuiThemeProvider>
     );

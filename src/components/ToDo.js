@@ -23,6 +23,7 @@ const styles = theme => ({
     root: {
       width: '100%',
     },
+    
   });
 
   let newDoArr = ["Research your trip, Ask our AI Chat bot about things to do!", "Have your passport/documentation", "Purchase travel insurance"]
@@ -78,50 +79,46 @@ const styles = theme => ({
         <div className={classes.root}>
 
         <Card className='Card'>
-            <CardContent>
-
-                <List>
-            {this.state.toDoArr.map(value => (
-              <ListItem
-                key={value}
-                role={undefined}
-                
-                button
-                onClick={this.handleToggle(value)}
-                className={classes.listItem}
-              >
+          <CardContent>
+            <Typography variant="h6" component="h5">
+              To Do Before Flight
+            </Typography>
+            
+            <List>
+              {this.state.toDoArr.map(value => (
+                <ListItem
+                  key={value}
+                  role={undefined}
+                  
+                  button
+                  onClick={this.handleToggle(value)}
+                  className={classes.listItem}
+                >
                 <Checkbox
                   checked={this.state.checked.indexOf(value) !== -1}
                   tabIndex={-1}
                   disableRipple
                 />
-               
                 <ListItem>{`${value}`}</ListItem>
-                    
-
-              </ListItem>
-              
-            ))}
-            <ListItem>
-            <TextField
-          id="outlined-email-input"
-          label="Add Item to list"
-          className={classes.textField}
-          value= {this.state.inputValue}
-          onChange ={this.handleChange}
-          type="text"
-          name="email"
-          margin="normal"
-          variant="outlined"
-        />
-        <Button color="primary" type="submit" onClick = {this.handleAddItem} className={classes.button}>
-          Add
-        </Button>
-        
-            </ListItem>          
-          </List>
-
-            </CardContent>
+                </ListItem>
+              ))}
+              <ListItem>
+                <TextField
+                  id="outlined-email-input"
+                  label="Add Item to list"
+                  className={classes.textField}
+                  value= {this.state.inputValue}
+                  onChange ={this.handleChange}
+                  type="text"
+                  name="email"
+                  margin="normal"
+                />
+                <Button color="primary" type="submit" onClick = {this.handleAddItem} className={classes.button}>
+                  Add
+                </Button>
+              </ListItem>          
+            </List>
+          </CardContent>
         </Card>
         </div>
       );
