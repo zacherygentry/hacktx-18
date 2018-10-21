@@ -173,7 +173,7 @@ class SimpleAppBar extends React.Component {
                   <img src={airplane} style={{ width: 55, height: 55 }} alt="airplane" />
                 </Toolbar>
               </AppBar>
-              {/* <FlightDetails departureTime={this.state.departureTime} flightNumber={this.state.flightNumber} flightStatus={this.state.flightStatus} origin={this.state.origin} destination={this.state.destination} /> */}
+              <FlightDetails departureTime={this.state.departureTime} flightNumber={this.state.flightNumber} flightStatus={this.state.flightStatus} origin={this.state.origin} destination={this.state.destination}/>
               <Weather forecasts={this.state.forecasts} destination={this.state.destination} />
               <ToDo />
               <TrendingHashtags />
