@@ -28,14 +28,9 @@ function SimpleAppBar(props) {
         </Toolbar>
       </AppBar>
       <FlightDetails></FlightDetails>
-<<<<<<< HEAD
-
-      <TrendingHashtags/>
-
-=======
       <Weather></Weather>
+      <TrendingHashtags/>
       <RideServices></RideServices>
->>>>>>> master
     </div>
   );
 }
