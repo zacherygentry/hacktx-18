@@ -31,10 +31,11 @@ function SimpleAppBar(props) {
         </Toolbar>
       </AppBar>
       <FlightDetails></FlightDetails>
-      <ToDo></ToDo>
       <Weather></Weather>
-      <TrendingHashtags/>
       <RideServices></RideServices>
+      <TrendingHashtags/>
+      <ToDo></ToDo>
+
     </div>
   );
 }
