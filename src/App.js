@@ -74,7 +74,7 @@ class SimpleAppBar extends React.Component {
   getInfo(email) {
     // Get user
     console.log(email);
-    fetch('https://aa-hacktx.herokuapp.com/user?email=' + email)
+    fetch('https://aa-hacktx.herokuapp.com/user?email=kennethcassel@gmail.com')
       .then((response) => {
         if (response.status === 200) {
           return response.json();
@@ -120,7 +120,7 @@ class SimpleAppBar extends React.Component {
             let airport = airports.filter((item) => item.airport === this.state.destination);
             console.log(airport);
             if (airport) {
-              fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${airport[0].lat}&lon=${airport[0].lon}&cnt=5&APPID=3015d1a66cab25c92dd4eb00b40302b5&units=imperial`)
+              fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=32.9222&lon=-97.0409&cnt=5&APPID=3015d1a66cab25c92dd4eb00b40302b5&units=imperial`)
                 .then(res => res.json())
                 .then(res => { this.setState({ forecasts: res.list }, () => console.log(this.state.forecasts)) })
                 .catch(err => console.error("Something went wrong: " + err))
@@ -160,7 +160,7 @@ class SimpleAppBar extends React.Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className='Root'>
-          {this.state.isLoggedIn &&
+          {!this.state.isLoggedIn &&
             <div>
               <AppBar color="primary" position="static">
                 <Toolbar>
@@ -170,14 +170,14 @@ class SimpleAppBar extends React.Component {
                   <img src={airplane} style={{ width: 55, height: 55 }} alt="airplane" />
                 </Toolbar>
               </AppBar>
-              <FlightDetails departureTime={this.state.departureTime} flightNumber={this.state.flightNumber} flightStatus={this.state.flightStatus} origin={this.state.origin} destination={this.state.destination} />
+              {/* <FlightDetails departureTime={this.state.departureTime} flightNumber={this.state.flightNumber} flightStatus={this.state.flightStatus} origin={this.state.origin} destination={this.state.destination} /> */}
               <Weather forecasts={this.state.forecasts} destination={this.state.destination} />
               <ToDo />
               <TrendingHashtags />
             </div>
 
           }
-          {!this.state.isLoggedIn &&
+          {this.state.isLoggedIn &&
             <div style={styles.loginPage}>
               <div style={styles.userInformation}>
                 <TextField
