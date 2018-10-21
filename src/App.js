@@ -49,7 +49,7 @@ class SimpleAppBar extends React.Component {
     console.log(email);
     fetch('https://aa-hacktx.herokuapp.com/user?email=' + email)
       .then((response) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           return response.json();
         }
         else {
@@ -65,7 +65,7 @@ class SimpleAppBar extends React.Component {
         fetch('https://aa-hacktx.herokuapp.com/reservation?userId=' + id) // Get flights
           .then((response) => {
             console.log(response);
-            if (response.status == 200) {
+            if (response.status === 200) {
               return response.json()
             }
             else {
@@ -144,7 +144,7 @@ class SimpleAppBar extends React.Component {
             <div style={styles.loginPage}>
               <div style={styles.userInformation}>
                 <TextField
-                  error={this.state.errorLoggingIn == true ? true : false}
+                  error={this.state.errorLoggingIn === true ? true : false}
                   id="standard-with-placeholder"
                   label="Email"
                   placeholder="email"

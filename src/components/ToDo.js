@@ -74,7 +74,8 @@ const styles = theme => ({
         let myNewArr = [];
         myNewArr = this.state.toDoArr.push(this.state.inputValue)
         this.setState({
-            toDoArr: this.state.toDoArr
+            toDoArr: this.state.toDoArr,
+            inputValue: ''
         })
         console.log(myNewArr)
     }
@@ -105,6 +106,7 @@ const styles = theme => ({
                   checked={this.state.checked.indexOf(value) !== -1}
                   tabIndex={-1}
                   disableRipple
+                  color="primary"
                 />
                 <ListItem>{`${value}`}</ListItem>
                 </ListItem>
