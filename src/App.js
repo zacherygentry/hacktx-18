@@ -29,6 +29,17 @@ const theme = createMuiTheme({
   },
 });
 
+const airports = [
+  { airport: "DFW", lat: 32.9222, lon: -97.0409 },
+  { airport: "LAX", lat: 33.9456, lon: -118.391 },
+  { airport: "MIA", lat: 25.7953, lon: -80.2727 },
+  { airport: "PHL", lat: 39.8744, lon: -75.247245 },
+  { airport: "ORD", lat: 41.9742, lon: -87.9073 },
+  { airport: "JFK", lat: 40.6413, lon: -73.7781 },
+  { airport: "LHR", lat: 51.4700, lon: -0.4543 },
+  { airport: "HKG", lat: 22.3080, lon: 113.9185 }
+]
+
 
 class SimpleAppBar extends React.Component {
   constructor(props) {
@@ -86,9 +97,18 @@ class SimpleAppBar extends React.Component {
                 flightNumber: flight.flightNumber,
                 cost: flight.cost,
                 isLoggedIn: true
-              })
+              });
             }
           })
+          .then(() => {
+            let airport = airports.filter((item) => item.airport === this.state.destination);
+            console.log(airport);
+            fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${airport[0].lat}&lon=${airport[0].lon}&cnt=5&APPID=3015d1a66cab25c92dd4eb00b40302b5&units=imperial`)
+              .then(res => res.json())
+              .then(res => { this.setState({ forecasts: res.list }, () => console.log(this.state.forecasts)) })
+              .catch(err => console.error("Something went wrong: " + err))
+          }
+          )
       })
   }
 
@@ -132,7 +152,7 @@ class SimpleAppBar extends React.Component {
                 </Toolbar>
               </AppBar>
               <FlightDetails departureTime={this.state.departureTime} flightNumber={this.state.flightNumber} origin={this.state.origin} destination={this.state.destination} />
-              <Weather />
+              <Weather forecasts={this.state.forecasts} destination={this.state.destination} />
               <TrendingHashtags />
               <ToDo />
             </div>

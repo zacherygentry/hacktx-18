@@ -51,7 +51,7 @@ class Weather extends Component {
   }
 
   componentDidMount () {
-    this.getForcasts(30.267153,-97.743057);
+    //this.getForcasts(30.267153,-97.743057);
   }
 
   getForcasts = (lat, long) => {
@@ -66,10 +66,10 @@ class Weather extends Component {
   }
   
   render() {
-    const {forecasts} = this.state
+    const {forecasts} = this.props
 
     let forcastsContent = forecasts && forecasts.map( (forecast, key ) => {
-      let forecastTemp = ((forecast.main.temp - 273.15) * (9/5) + 32).toFixed(0);
+      let forecastTemp = forecast.main.temp.toFixed(1);
       
       return (
         <div style={styles.forecastItem} key={forecast.dt}>
@@ -85,7 +85,7 @@ class Weather extends Component {
       <Card className='Card'>
         <CardContent>
           <Typography variant="h6" component="h5">
-            5-Day Weather Forecast For DFW
+            5-Day Weather Forecast For {this.props.destination}
           </Typography>
           <div style={styles.forecastList}>
             {forcastsContent}
