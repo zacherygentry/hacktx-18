@@ -71,7 +71,6 @@ class trendinghashtags extends Component {
 					<div style={styles.list}>
 						{hashTagsContent}
 					</div>
-
 				</CardContent>
 
 			</Card>

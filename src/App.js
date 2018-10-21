@@ -74,7 +74,7 @@ class SimpleAppBar extends React.Component {
   getInfo(email) {
     // Get user
     console.log(email);
-    fetch('https://aa-hacktx.herokuapp.com/user?email=kennethcassel@gmail.com')
+    fetch('https://aa-hacktx.herokuapp.com/user?email=' + email)
       .then((response) => {
         if (response.status === 200) {
           return response.json();
@@ -147,12 +147,15 @@ class SimpleAppBar extends React.Component {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 800
+        height: 800,
       },
       userInformation: {
         display: 'flex',
         flexDirection: 'column',
         width: '50%',
+      },
+      TextFieldContent: {
+        MarginTop: '10%',
       }
     }
 
@@ -160,7 +163,7 @@ class SimpleAppBar extends React.Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className='Root'>
-          {!this.state.isLoggedIn &&
+          {this.state.isLoggedIn &&
             <div>
               <AppBar color="primary" position="static">
                 <Toolbar>
@@ -177,15 +180,16 @@ class SimpleAppBar extends React.Component {
             </div>
 
           }
-          {this.state.isLoggedIn &&
-            <div style={styles.loginPage}>
+          {!this.state.isLoggedIn &&
+            <div className="Login-Page" style={styles.loginPage}>
               <div style={styles.userInformation}>
                 <TextField
-                  error={this.state.errorLoggingIn === true ? true : false}
+                  error={this.state.errorLoggingIn}
                   id="standard-with-placeholder"
                   label="Email"
                   placeholder="email"
                   margin="normal"
+                  style={styles.TextFieldContent}
                   onChange={this.handleChange('email')}
                 />
                 <TextField
@@ -195,10 +199,11 @@ class SimpleAppBar extends React.Component {
                   placeholder="password"
                   margin="normal"
                 />
+                <Button variant="contained" color="primary" onClick={() => { this.onSubmit(this.state.email) }}>
+                  Submit
+                </Button>
               </div>
-              <Button variant="contained" color="primary" onClick={() => { this.onSubmit(this.state.email) }}>
-                Submit
-            </Button>
+              
             </div>
           }
 
