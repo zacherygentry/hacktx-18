@@ -55,7 +55,6 @@ const styles = theme => ({
     };
 
     handleChange = (event) =>{
-        console.log(this.state.inputValue)
         this.setState({
             inputValue: event.target.value
         })
@@ -65,24 +64,20 @@ const styles = theme => ({
       if(event.key === 'Enter'){
         let myNewArr = [];
         myNewArr = this.state.toDoArr.push(this.state.inputValue)
-        console.log("addaitme")
         this.setState({
             toDoArr: this.state.toDoArr
         })
         console.log(myNewArr)
-        console.log(this.state.toDoArr)
       }
     }
 
     handleAddItem = () =>{
         let myNewArr = [];
         myNewArr = this.state.toDoArr.push(this.state.inputValue)
-        console.log("addaitme")
         this.setState({
             toDoArr: this.state.toDoArr
         })
         console.log(myNewArr)
-        console.log(this.state.toDoArr)
     }
   
     render() {
