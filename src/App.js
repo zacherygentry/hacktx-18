@@ -120,7 +120,7 @@ class SimpleAppBar extends React.Component {
             let airport = airports.filter((item) => item.airport === this.state.destination);
             console.log(airport);
             if (airport) {
-              fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=32.9222&lon=-97.0409&cnt=5&APPID=3015d1a66cab25c92dd4eb00b40302b5&units=imperial`)
+              fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${airport[0].lat}&lon=${airport[0].lon}&cnt=5&APPID=3015d1a66cab25c92dd4eb00b40302b5&units=imperial`)
                 .then(res => res.json())
                 .then(res => { this.setState({ forecasts: res.list }, () => console.log(this.state.forecasts)) })
                 .catch(err => console.error("Something went wrong: " + err))
