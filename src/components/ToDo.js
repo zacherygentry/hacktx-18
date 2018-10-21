@@ -119,14 +119,11 @@ const styles = theme => ({
           Add
         </Button>
         
-            </ListItem>
-            
-          </List>}
-          
-               
+            </ListItem>          
+          </List>
+
             </CardContent>
         </Card>
-          
         </div>
       );
     }
