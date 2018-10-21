@@ -6,6 +6,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import TrendingHashtags from './components/trendinghashtags';
 import FlightDetails from './components/FlightDetails';
+import Weather from './components/Weather';
+import RideServices from './components/RideServices';
 
 const styles = {
   root: {
@@ -26,9 +28,14 @@ function SimpleAppBar(props) {
         </Toolbar>
       </AppBar>
       <FlightDetails></FlightDetails>
+<<<<<<< HEAD
 
       <TrendingHashtags/>
 
+=======
+      <Weather></Weather>
+      <RideServices></RideServices>
+>>>>>>> master
     </div>
   );
 }
