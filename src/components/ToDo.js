@@ -24,11 +24,7 @@ import '../App.css';
 const styles = theme => ({
   root: {
     width: '100%',
-  },
-  MessengerCustomerChat:{
-    greeting_dialog_display: show
   }
-
 });
 
 let newDoArr = [
@@ -105,7 +101,7 @@ class ToDo extends React.Component {
             </Typography>
 
             <List>
-            <MessengerCustomerChat
+            <MessengerCustomerChat greeting_dialog_display="show"
       pageId="2025835257495217"
       appId="290859664860684"
     />
