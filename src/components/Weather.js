@@ -18,18 +18,16 @@ const styles = {
         transform: 'scale(0.8)',
     },
     title: {
-      fontSize: 14,
+        fontSize: 14,
     },
     pos: {
-      marginBottom: 12,
+        marginBottom: 12,
     },
     forecastItem: {
       display: 'flex',
       flexDirection: 'column',
-      margin: 'auto',
       marginTop: '2%',
-
-
+      margin: 'auto',
     },
     forecastList: {
       display: 'flex',
@@ -67,19 +65,15 @@ class Weather extends Component {
     const {forecasts} = this.state
 
     let forcastsContent = forecasts && forecasts.map( (forecast, key ) => {
-      console.log(forecast)
       let forecastTemp = ((forecast.main.temp - 273.15) * (9/5) + 32).toFixed(0);
       
       return (
         <div style={styles.forecastItem} key={forecast.dt}>
-
           {forecast.weather[0].main === "Clear" && <Icon> <WbSunny/> </Icon>}
           {forecast.weather[0].main === "Clouds" && <Icon> <WbCloudy/></Icon>}
           {forecast.weather[0].main === "Rain" && <Icon> <BeachAccess/></Icon>}
-
           <p>{forecastTemp}</p>
-        </div>
-        
+        </div>  
       );
     });
 
@@ -87,7 +81,7 @@ class Weather extends Component {
       <Card className='Card'>
         <CardContent>
           <Typography variant="h6" component="h5">
-            5-Day Weather Forecast for {destination}
+            5-Day Weather Forecast For DFW
           </Typography>
           <div style={styles.forecastList}>
             {forcastsContent}
