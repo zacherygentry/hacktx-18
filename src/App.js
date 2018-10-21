@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import FlightDetails from './components/FlightDetails';
+import Weather from './components/Weather';
 import RideServices from './components/RideServices';
 
 const styles = {
@@ -26,6 +27,7 @@ function SimpleAppBar(props) {
         </Toolbar>
       </AppBar>
       <FlightDetails></FlightDetails>
+      <Weather></Weather>
       <RideServices></RideServices>
     </div>
   );
