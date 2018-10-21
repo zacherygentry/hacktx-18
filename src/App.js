@@ -11,7 +11,8 @@ import TrendingHashtags from './components/trendinghashtags';
 import FlightDetails from './components/FlightDetails';
 import ToDo from './components/ToDo';
 import Weather from './components/Weather';
-import RideServices from './components/RideServices';
+import airplane from './airplane.png'
+
 
 const theme = createMuiTheme({
   shadows: ["none"],
@@ -29,6 +30,19 @@ const theme = createMuiTheme({
   },
 });
 
+const steps = [
+  {
+    id: '0',
+    message: 'Welcome to react chatbot!',
+    trigger: '1',
+  },
+  {
+    id: '1',
+    message: 'Bye!',
+    end: true,
+  },
+];
+
 const airports = [
   { airport: "DFW", lat: 32.9222, lon: -97.0409 },
   { airport: "LAX", lat: 33.9456, lon: -118.391 },
@@ -37,7 +51,9 @@ const airports = [
   { airport: "ORD", lat: 41.9742, lon: -87.9073 },
   { airport: "JFK", lat: 40.6413, lon: -73.7781 },
   { airport: "LHR", lat: 51.4700, lon: -0.4543 },
-  { airport: "HKG", lat: 22.3080, lon: 113.9185 }
+  { airport: "HKG", lat: 22.3080, lon: 113.9185 },
+  { airport: "DCA", lat: 38.8512, lon: -77.0402 },
+  { airport: "LGA", lat: 40.7769, lon: -73.8740 },
 ]
 
 
@@ -103,10 +119,12 @@ class SimpleAppBar extends React.Component {
           .then(() => {
             let airport = airports.filter((item) => item.airport === this.state.destination);
             console.log(airport);
-            fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${airport[0].lat}&lon=${airport[0].lon}&cnt=5&APPID=3015d1a66cab25c92dd4eb00b40302b5&units=imperial`)
-              .then(res => res.json())
-              .then(res => { this.setState({ forecasts: res.list }, () => console.log(this.state.forecasts)) })
-              .catch(err => console.error("Something went wrong: " + err))
+            if (airport) {
+              fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${airport[0].lat}&lon=${airport[0].lon}&cnt=5&APPID=3015d1a66cab25c92dd4eb00b40302b5&units=imperial`)
+                .then(res => res.json())
+                .then(res => { this.setState({ forecasts: res.list }, () => console.log(this.state.forecasts)) })
+                .catch(err => console.error("Something went wrong: " + err))
+            }
           }
           )
       })
@@ -149,13 +167,15 @@ class SimpleAppBar extends React.Component {
                   <Typography variant="h6" color='secondary'>
                     Welcome, {this.state.name}
                   </Typography>
+                  <img src={airplane} style={{ width: 55, height: 55 }} alt="airplane" />
                 </Toolbar>
               </AppBar>
-              <FlightDetails departureTime={this.state.departureTime} flightNumber={this.state.flightNumber} origin={this.state.origin} destination={this.state.destination} />
+              <FlightDetails departureTime={this.state.departureTime} flightNumber={this.state.flightNumber} flightStatus={this.state.flightStatus} origin={this.state.origin} destination={this.state.destination} />
               <Weather forecasts={this.state.forecasts} destination={this.state.destination} />
-              <TrendingHashtags />
               <ToDo />
+              <TrendingHashtags />
             </div>
+
           }
           {!this.state.isLoggedIn &&
             <div style={styles.loginPage}>

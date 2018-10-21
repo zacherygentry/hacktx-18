@@ -37,10 +37,15 @@ const styles = {
 
 function FlightDetails(props) {
     const { classes } = props;
-    let hour = new Date(props.departureTime).getHours();
+    let hour = new Date(props.departureTime).getHours() + 5;
+    let month = new Date(props.departureTime).getMonth();
+    let day = new Date(props.departureTime).getDate();
     const am_pm = hour >= 12 ? 'pm' : 'am';
     hour %= 12;
-    const minutes = new Date(props.departureTime).getMinutes();
+    let minutes = new Date(props.departureTime).getMinutes();
+    if(minutes < 10){
+        minutes = '0' + minutes;
+    }
 
     return (
         <Card className='Card'>
@@ -55,8 +60,8 @@ function FlightDetails(props) {
                 </div>
 
                 <div className={classes.body}>
-                    <Detail title="Gate Number" content="A16"></Detail>
                     <Detail title="Flight" content={props.flightNumber}></Detail>
+                    <Detail title="Date" content={month + '/' + day}></Detail>
                     <Detail title="Departure Time" content={hour + ':' + minutes + am_pm}></Detail>
                 </div>
 
