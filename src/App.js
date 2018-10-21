@@ -59,10 +59,10 @@ class SimpleAppBar extends React.Component {
             </Toolbar>
           </AppBar>
           <FlightDetails></FlightDetails>
-          <Weather></Weather>
-          <RideServices></RideServices>
-          <TrendingHashtags />
           <ToDo></ToDo>
+          <Weather></Weather>
+          <TrendingHashtags />
+          <RideServices></RideServices>
         </div>
       </MuiThemeProvider>
     );
