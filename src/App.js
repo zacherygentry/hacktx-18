@@ -5,12 +5,28 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import TrendingHashtags from './components/trendinghashtags';
 import FlightDetails from './components/FlightDetails';
 import ToDo from './components/ToDo';
 import Weather from './components/Weather';
 import RideServices from './components/RideServices';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#0078d2',
+      contrastText: '#ffffff',
+    },
+    secondary: {
+      main: '#ffffff',
+    },
+    textPrimary: {
+      main: '#ffffff'
+    }
+  },
+});
 
 class SimpleAppBar extends React.Component {
   constructor(props) {
@@ -57,6 +73,8 @@ class SimpleAppBar extends React.Component {
     }
 
     return (
+      <MuiThemeProvider theme={theme}>
+
       <div className='Root'>
 
         { this.state.isLoggedIn &&
@@ -99,6 +117,8 @@ class SimpleAppBar extends React.Component {
         }
 
       </div>
+      </MuiThemeProvider>
+
 
     );
   }
