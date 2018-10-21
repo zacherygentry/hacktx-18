@@ -50,6 +50,7 @@ function FlightDetails(props) {
                     <Typography variant="h6" component="h5" className={classes.headerTitle}>
                         Flight Details
                         <Typography>{props.origin} -> {props.destination}</Typography>
+                        <Typography>Status: {props.flightStatus}</Typography>
                     </Typography>
                 </div>
 

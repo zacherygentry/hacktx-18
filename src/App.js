@@ -121,9 +121,7 @@ class SimpleAppBar extends React.Component {
 
     return (
       <MuiThemeProvider theme={theme}>
-
         <div className='Root'>
-
           {this.state.isLoggedIn &&
             <div>
               <AppBar color="primary" position="static">
@@ -134,10 +132,9 @@ class SimpleAppBar extends React.Component {
                 </Toolbar>
               </AppBar>
               <FlightDetails departureTime={this.state.departureTime} flightNumber={this.state.flightNumber} origin={this.state.origin} destination={this.state.destination} />
-              <Weather></Weather>
-              <RideServices></RideServices>
+              <Weather />
               <TrendingHashtags />
-              <ToDo></ToDo>
+              <ToDo />
             </div>
           }
           {!this.state.isLoggedIn &&
