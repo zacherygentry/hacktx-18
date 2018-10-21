@@ -13,6 +13,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 // import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
+
 
 
 // CSS
@@ -100,6 +102,10 @@ class ToDo extends React.Component {
             </Typography>
 
             <List>
+            <MessengerCustomerChat
+      pageId="2025835257495217"
+      appId="290859664860684"
+    />
               {this.state.toDoArr.map(value => (
                 <ListItem
                   key={value}
