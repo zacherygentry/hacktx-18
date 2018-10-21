@@ -7,10 +7,10 @@ import { CardContent } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
+// import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+// import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
-import IconButton from '@material-ui/core/IconButton';
+// import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -54,22 +54,29 @@ const styles = theme => ({
     };
 
     handleChange = (event) =>{
-        console.log(this.state.inputValue)
         this.setState({
             inputValue: event.target.value
         })
     }
 
-    handleAddItem = () =>{
+    handleKeyPress = (event) => {
+      if(event.key === 'Enter'){
         let myNewArr = [];
         myNewArr = this.state.toDoArr.push(this.state.inputValue)
-        console.log("addaitme")
         this.setState({
             toDoArr: this.state.toDoArr
         })
         console.log(myNewArr)
-        console.log(this.state.toDoArr)
+      }
+    }
 
+    handleAddItem = () =>{
+        let myNewArr = [];
+        myNewArr = this.state.toDoArr.push(this.state.inputValue)
+        this.setState({
+            toDoArr: this.state.toDoArr
+        })
+        console.log(myNewArr)
     }
   
     render() {
@@ -109,6 +116,7 @@ const styles = theme => ({
                   className={classes.textField}
                   value= {this.state.inputValue}
                   onChange ={this.handleChange}
+                  onKeyPress={this.handleKeyPress}
                   type="text"
                   name="email"
                   margin="normal"
