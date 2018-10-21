@@ -26,6 +26,9 @@
   margin: 4%;
 }
 
+.HeaderTitle {
+  margin-left: 2%;
+}
 
 @keyframes App-logo-spin {
   from {

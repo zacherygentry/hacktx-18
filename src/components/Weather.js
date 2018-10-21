@@ -26,12 +26,12 @@ const styles = {
     forecastItem: {
       display: 'flex',
       flexDirection: 'column',
-      marginTop: '2%',
       margin: 'auto',
     },
     forecastList: {
       display: 'flex',
       flexDirection: 'row',
+      marginTop: '3%',
       justifyContent: 'center',
 
     },

@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 // Material UI
 import Card from '@material-ui/core/Card';
-import { CardContent, Icon } from '@material-ui/core';
+import { CardContent } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import { Flight } from '@material-ui/icons';
 // CSS
 import '../App.css';
-
 
 const styles = {
     header: {
@@ -24,7 +22,7 @@ const styles = {
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
-    detail: {
+    service: {
         display: 'flex',
         flexDirection: 'column',
     },
@@ -34,24 +32,20 @@ const styles = {
     }
 };
 
+function RideServices(props) {
 
-function FlightDetails(props) {
     const { classes } = props;
-
     return (
         <Card className='Card'>
             <CardContent>
-                <div className={classes.header}>
-                    <Icon> <Flight /> </Icon>
-                    <Typography component="h2" className={classes.headerTitle}>
-                        Flight Details
-                    </Typography>
-                </div>
+                <Typography component="h2" className={classes.headerTitle}>
+                    Ride Service Prices
+                </Typography>
 
                 <div className={classes.body}>
-                    <Detail title="Gate Number" content="A16"></Detail>
-                    <Detail title="Flight" content="219123"></Detail>
-                    <Detail title="Boarding Time" content="12:32pm"></Detail>
+                    <Service service={'Uber'} price='10'></Service>
+                    <Service service={'Lyft'} price='10'></Service>
+                    <Service service={'Bird'} price='5'></Service>
                 </div>
 
             </CardContent>
@@ -59,7 +53,7 @@ function FlightDetails(props) {
     );
 }
 
-class Detail extends React.Component {
+class Service extends React.Component {
     constructor(props) {
         super(props);
         this.state = {}
@@ -67,20 +61,17 @@ class Detail extends React.Component {
 
     render() {
         return (
-            <div style={styles.detail}>
-                <Typography style={styles.centerChild} component='h2'>
-                    {this.props.title}
-                </Typography>
-                <Typography style={styles.centerChild} variant='h6' component='h2'>
-                {this.props.content}
+            <div style={styles.service}>
+                <Typography style={styles.centerChild} component='h2' variant='h6'>
+                    {this.props.service + ': $' + this.props.price}
                 </Typography>
             </div>
         );
     }
 }
 
-FlightDetails.propTypes = {
+RideServices.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FlightDetails);
+export default withStyles(styles)(RideServices);
