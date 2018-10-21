@@ -25,6 +25,9 @@ const styles = theme => ({
   root: {
     width: '100%',
   },
+  MessengerCustomerChat:{
+    greeting_dialog_display: show
+  }
 
 });
 
