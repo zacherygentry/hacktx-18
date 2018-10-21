@@ -44,7 +44,25 @@ class SimpleAppBar extends React.Component {
       }).then((response) => {
         console.log(response);
         this.setState({ name: response.firstName })
-      });
+        fetch('https://aa-hacktx.herokuapp.com/reservation?userId=' + response._id) // Get flights
+          .then((response) => {
+            console.log(response);
+            return response.json()
+          })
+          .then((res) => {
+            console.log(res)
+            const flight = res.flights[0];
+            this.setState({
+              origin: flight.origin,
+              destination: flight.destination,
+              departureTime: flight.departureTime,
+              arrivalTime: flight.arrivalTime,
+              flightStatus: flight.flightStatus,
+              flightNumber: flight.flightNumber,
+              cost: flight.cost
+            })
+          })
+      })
   }
 
   render() {
@@ -58,7 +76,7 @@ class SimpleAppBar extends React.Component {
               </Typography>
             </Toolbar>
           </AppBar>
-          <FlightDetails></FlightDetails>
+          <FlightDetails departureTime={this.state.departureTime} flightNumber={this.state.flightNumber} origin={this.state.origin} destination={this.state.destination} />
           <ToDo></ToDo>
           <Weather></Weather>
           <TrendingHashtags />

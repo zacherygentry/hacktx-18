@@ -31,12 +31,16 @@ const styles = {
 
     centerChild: {
         margin: 'auto'
-    }
+    },
 };
 
 
 function FlightDetails(props) {
     const { classes } = props;
+    let hour = new Date(props.departureTime).getHours();
+    const am_pm = hour >= 12 ? 'pm' : 'am';
+    hour %= 12;
+    const minutes = new Date(props.departureTime).getMinutes();
 
     return (
         <Card className='Card'>
@@ -45,13 +49,14 @@ function FlightDetails(props) {
                     <Icon> <Flight /> </Icon>
                     <Typography variant="h6" component="h5" className={classes.headerTitle}>
                         Flight Details
+                        <Typography>{props.origin} -> {props.destination}</Typography>
                     </Typography>
                 </div>
 
                 <div className={classes.body}>
                     <Detail title="Gate Number" content="A16"></Detail>
-                    <Detail title="Flight" content="219123"></Detail>
-                    <Detail title="Boarding Time" content="12:32pm"></Detail>
+                    <Detail title="Flight" content={props.flightNumber}></Detail>
+                    <Detail title="Departure Time" content={hour + ':' + minutes + am_pm}></Detail>
                 </div>
 
             </CardContent>
@@ -72,7 +77,7 @@ class Detail extends React.Component {
                     {this.props.title}
                 </Typography>
                 <Typography style={styles.centerChild} variant='h6' component='h2'>
-                {this.props.content}
+                    {this.props.content}
                 </Typography>
             </div>
         );
