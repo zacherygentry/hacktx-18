@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { nominalTypeHack } from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 // Material UI
 import Card from '@material-ui/core/Card';
@@ -33,6 +33,10 @@ const styles = {
       flexDirection: 'row',
       marginTop: '3%',
       justifyContent: 'center',
+
+    },
+    card: {
+      shadow: 'none',
 
     },
 };

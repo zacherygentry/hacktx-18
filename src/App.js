@@ -14,6 +14,7 @@ import Weather from './components/Weather';
 import RideServices from './components/RideServices';
 
 const theme = createMuiTheme({
+  shadows: ["none"],
   palette: {
     primary: {
       main: '#0078d2',
@@ -27,6 +28,7 @@ const theme = createMuiTheme({
     }
   },
 });
+
 
 class SimpleAppBar extends React.Component {
   constructor(props) {
@@ -63,7 +65,7 @@ class SimpleAppBar extends React.Component {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-
+        height: 800
       },
       userInformation: {
           display: 'flex',
@@ -79,12 +81,12 @@ class SimpleAppBar extends React.Component {
 
         { this.state.isLoggedIn &&
           <div>
-            <AppBar position="static" color="default">
-            <Toolbar>
-              <Typography variant="h6" color="inherit">
-                Welcome, {this.state.name}
-              </Typography>
-            </Toolbar>
+            <AppBar color="primary" position="static">
+              <Toolbar>
+                <Typography variant="h6" color='secondary'>
+                  Welcome, {this.state.name}
+                </Typography>
+              </Toolbar>
             </AppBar>
             <FlightDetails></FlightDetails>
             <Weather></Weather>
