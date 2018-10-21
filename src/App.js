@@ -11,8 +11,8 @@ import TrendingHashtags from './components/trendinghashtags';
 import FlightDetails from './components/FlightDetails';
 import ToDo from './components/ToDo';
 import Weather from './components/Weather';
-import airplane from './airplane.png'
-
+import airplane from './airplane.png';
+import aaicon from './images/aaIcon.png';
 
 const theme = createMuiTheme({
   shadows: ["none"],
@@ -156,6 +156,15 @@ class SimpleAppBar extends React.Component {
       },
       TextFieldContent: {
         MarginTop: '10%',
+      },
+      appbar: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      },
+      text: {
+        display: 'flex',
+        alignItems: 'center',
       }
     }
 
@@ -166,14 +175,19 @@ class SimpleAppBar extends React.Component {
           {this.state.isLoggedIn &&
             <div>
               <AppBar color="primary" position="static">
-                <Toolbar>
-                  <Typography variant="h6" color='secondary'>
+                <Toolbar style={styles.appbar}>
+                  
+                  <Typography style={styles.text} variant="h6" color='secondary'>
                     Welcome, {this.state.name}
+                    <img src={airplane} style={{ width: 55, height: 55 }} alt="airplane" />
+
                   </Typography>
-                  <img src={airplane} style={{ width: 55, height: 55 }} alt="airplane" />
+                  <a href="https://www.aa.com/homePage.do">
+                    <img src={aaicon} style={{ width: 20, height: 20 }} alt="airplane2" />
+                  </a>
                 </Toolbar>
               </AppBar>
-              {/* <FlightDetails departureTime={this.state.departureTime} flightNumber={this.state.flightNumber} flightStatus={this.state.flightStatus} origin={this.state.origin} destination={this.state.destination} /> */}
+              <FlightDetails departureTime={this.state.departureTime} flightNumber={this.state.flightNumber} flightStatus={this.state.flightStatus} origin={this.state.origin} destination={this.state.destination} />
               <Weather forecasts={this.state.forecasts} destination={this.state.destination} />
               <ToDo />
               <TrendingHashtags />
