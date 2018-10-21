@@ -43,7 +43,7 @@ function FlightDetails(props) {
             <CardContent>
                 <div className={classes.header}>
                     <Icon> <Flight /> </Icon>
-                    <Typography component="h2" className={classes.headerTitle}>
+                    <Typography variant="h6" component="h5" className={classes.headerTitle}>
                         Flight Details
                     </Typography>
                 </div>

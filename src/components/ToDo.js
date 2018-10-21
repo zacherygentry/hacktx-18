@@ -7,10 +7,10 @@ import { CardContent } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
+// import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+// import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
-import IconButton from '@material-ui/core/IconButton';
+// import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -22,8 +22,8 @@ import '../App.css';
 const styles = theme => ({
     root: {
       width: '100%',
-      backgroundColor: theme.palette.background.paper,
     },
+    
   });
 
   let newDoArr = ["Research your trip, Ask our AI Chat bot about things to do!", "Have your passport/documentation", "Purchase travel insurance"]
@@ -54,22 +54,29 @@ const styles = theme => ({
     };
 
     handleChange = (event) =>{
-        console.log(this.state.inputValue)
         this.setState({
             inputValue: event.target.value
         })
     }
 
-    handleAddItem = () =>{
+    handleKeyPress = (event) => {
+      if(event.key === 'Enter'){
         let myNewArr = [];
         myNewArr = this.state.toDoArr.push(this.state.inputValue)
-        console.log("addaitme")
         this.setState({
             toDoArr: this.state.toDoArr
         })
         console.log(myNewArr)
-        console.log(this.state.toDoArr)
+      }
+    }
 
+    handleAddItem = () =>{
+        let myNewArr = [];
+        myNewArr = this.state.toDoArr.push(this.state.inputValue)
+        this.setState({
+            toDoArr: this.state.toDoArr
+        })
+        console.log(myNewArr)
     }
   
     render() {
@@ -79,50 +86,47 @@ const styles = theme => ({
         <div className={classes.root}>
 
         <Card className='Card'>
-            <CardContent>
-
-                <List>
-            {this.state.toDoArr.map(value => (
-              <ListItem
-                key={value}
-                role={undefined}
-                
-                button
-                onClick={this.handleToggle(value)}
-                className={classes.listItem}
-              >
+          <CardContent>
+            <Typography variant="h6" component="h5">
+              To Do Before Flight
+            </Typography>
+            
+            <List>
+              {this.state.toDoArr.map(value => (
+                <ListItem
+                  key={value}
+                  role={undefined}
+                  
+                  button
+                  onClick={this.handleToggle(value)}
+                  className={classes.listItem}
+                >
                 <Checkbox
                   checked={this.state.checked.indexOf(value) !== -1}
                   tabIndex={-1}
                   disableRipple
                 />
-               
                 <ListItem>{`${value}`}</ListItem>
-                    
-
-              </ListItem>
-              
-            ))}
-            <ListItem>
-            <TextField
-          id="outlined-email-input"
-          label="Add Item to list"
-          className={classes.textField}
-          value= {this.state.inputValue}
-          onChange ={this.handleChange}
-          type="text"
-          name="email"
-          margin="normal"
-          variant="outlined"
-        />
-        <Button color="primary" type="submit" onClick = {this.handleAddItem} className={classes.button}>
-          Add
-        </Button>
-        
-            </ListItem>          
-          </List>
-
-            </CardContent>
+                </ListItem>
+              ))}
+              <ListItem>
+                <TextField
+                  id="outlined-email-input"
+                  label="Add Item to list"
+                  className={classes.textField}
+                  value= {this.state.inputValue}
+                  onChange ={this.handleChange}
+                  onKeyPress={this.handleKeyPress}
+                  type="text"
+                  name="email"
+                  margin="normal"
+                />
+                <Button color="primary" type="submit" onClick = {this.handleAddItem} className={classes.button}>
+                  Add
+                </Button>
+              </ListItem>          
+            </List>
+          </CardContent>
         </Card>
         </div>
       );

@@ -61,7 +61,7 @@ class trendinghashtags extends Component {
 		return (
 			<Card className='Card'>
       <CardContent>
-        <Typography component='h2'>
+        <Typography variant="h6" component="h5">
 					Trending Hashtags For Austin
 				</Typography>
 				<div style={styles.list}>
