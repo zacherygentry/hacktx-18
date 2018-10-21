@@ -1,38 +1,49 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import FlightDetails from './components/FlightDetails';
 import RideServices from './components/RideServices';
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-};
+class SimpleAppBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
 
-function SimpleAppBar(props) {
-  const { classes } = props;
+  componentDidMount() {
+    this.getInfo();
+  }
 
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Toolbar>
-          <Typography variant="h6" color="inherit">
-            Welcome Zach!
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <FlightDetails></FlightDetails>
-      <RideServices></RideServices>
-    </div>
-  );
+  getInfo() {
+    // Get user
+    fetch('https://aa-hacktx.herokuapp.com/user?email=jimenez.gustavo41%40gmail.com')
+      .then((response) => {
+        return response.json();
+      }).then((response) => {
+        console.log(response);
+        this.setState({ name: response.firstName })
+      });
+  }
+
+
+
+  render() {
+    return (
+      <div className='Root'>
+        <AppBar position="static" color="default">
+          <Toolbar>
+            <Typography variant="h6" color="inherit">
+              Welcome, {this.state.name}
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <FlightDetails></FlightDetails>
+        <RideServices></RideServices>
+      </div>
+    );
+  }
 }
 
-SimpleAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(SimpleAppBar);
+export default SimpleAppBar;
