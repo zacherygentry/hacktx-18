@@ -54,6 +54,7 @@ const airports = [
   { airport: "HKG", lat: 22.3080, lon: 113.9185 },
   { airport: "DCA", lat: 38.8512, lon: -77.0402 },
   { airport: "LGA", lat: 40.7769, lon: -73.8740 },
+  { airport: "MSY", lat: 29.9922, lon: -90.2590}
 ]
 
 
