@@ -3,7 +3,10 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import TrendingHashtags from './components/trendinghashtags';
 import FlightDetails from './components/FlightDetails';
+import ToDo from './components/ToDo';
+import Weather from './components/Weather';
 import RideServices from './components/RideServices';
 
 class SimpleAppBar extends React.Component {
@@ -27,8 +30,6 @@ class SimpleAppBar extends React.Component {
       });
   }
 
-
-
   render() {
     return (
       <div className='Root'>
@@ -40,6 +41,9 @@ class SimpleAppBar extends React.Component {
           </Toolbar>
         </AppBar>
         <FlightDetails></FlightDetails>
+        <ToDo></ToDo>
+        <Weather></Weather>
+        <TrendingHashtags />
         <RideServices></RideServices>
       </div>
     );
